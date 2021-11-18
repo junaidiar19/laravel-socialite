@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\GIController;
-use App\Http\Controllers\Auth\OauthController;
+use App\Http\Controllers\Auth\OAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +23,8 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('oauth/{driver}', [OauthController::class, 'redirectToProvider'])->name('social.oauth');
-Route::get('oauth/{driver}/callback', [OauthController::class, 'handleProviderCallback'])->name('social.callback');
+Route::get('oauth/{driver}', [OAuthController::class, 'redirectToProvider'])->name('social.oauth');
+Route::get('oauth/{driver}/callback', [OAuthController::class, 'handleProviderCallback'])->name('social.callback');
 
 // GI Auth
 Route::get('/guruinovatif/login', [GIController::class, 'login'])->name('guruinovatif.login');

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
@@ -22,6 +22,16 @@
 
                 </div>
             </div>
+
+            <h6>Kursus Yang Saya Ikuti</h6>
+
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

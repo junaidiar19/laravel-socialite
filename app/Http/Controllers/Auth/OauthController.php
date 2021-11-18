@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-class OauthController extends Controller
+class OAuthController extends Controller
 {
 
     public function __construct()
