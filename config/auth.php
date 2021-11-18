@@ -112,6 +112,5 @@ return [
     'gi_id'     => env('GI_ID'),
     'gi_secret' => env('GI_SECRET'),
     'gi_host'   => env('GI_HOST'),
-    'gi_callback' => env('APP_URL') . '/guruinovatif/callback'
-
+    'gi_callback' => env('APP_URL') . '/guruinovatif/callback',
 ];

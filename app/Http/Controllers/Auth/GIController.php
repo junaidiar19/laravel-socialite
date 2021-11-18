@@ -64,20 +64,27 @@ class GIController extends Controller
             return redirect('/')->withErrors('Failed to get login information! Try again.');
         }
 
-        $user = User::where('email', $email)->first();
-        if(!$user) {
-            $user = new User;
-            $user->name = $attr['name'];
-            $user->email = $attr['email'];
-            $user->email_verified_at = $attr['email_verified_at'];
-            $user->access_token = $access_token;
-            $user->provider = 'Guruinovatif';
-            $user->provider_id = $attr['id'];
-            $user->avatar = config('auth.gi_host') . $attr['image'];
-            $user->save();
+
+        $attr = [
+            'name' => $attr['name'], 
+            'email' => $attr['email'],
+            'email_verified_at' => $attr['email_verified_at'],
+            'access_token' => $access_token,
+            'provider' => 'Guruinovatif',
+            'provider_id' => $attr['id'],
+            'avatar' => config('auth.gi_host') . '/' . $attr['image'],
+        ];
+
+        $account = User::where('email', $email)->first();
+
+        if(!$account) {
+            $check = ['email' => $email];
+            User::firstOrCreate($check, $attr);
+        } else {
+            $account->update($attr);
         }
 
-        Auth::login($user);
+        Auth::login($account);
         return redirect('home');
     }
 }

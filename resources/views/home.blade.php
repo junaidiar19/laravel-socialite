@@ -24,19 +24,23 @@
             </div>
 
             @if (@$mycourse)
-            <h6>Kursus Yang Saya Ikuti</h6>
+            <h6 class="mb-3">Kursus Yang Saya Ikuti di Guru Inovatif</h6>
 
             <div class="row">
-                @foreach ($mycourse['data'] as $d)
+                @forelse ($mycourse->data as $d)
                 <div class="col-md-6">
                     <div class="card mb-3">
-                        <img src="{{ config('auth.gi_host') . '/' . $d['image'] }}" class="img-fluid" alt="">
+                        <img src="{{ config('auth.gi_host') . '/' . $d->image }}" class="img-fluid" alt="">
                         <div class="card-body">
-                            <h6>{{ $d['name'] }}</h6>
+                            <h6>{{ $d->name }}</h6>
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <div class="col-12">
+                    <p class="text-muted">Tidak ada kursus yang saya ikuti</p>
+                </div>
+                @endforelse
             </div>
             @endif
 

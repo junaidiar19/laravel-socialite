@@ -25,8 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $access = Http::withToken(Auth::user()->access_token)->get(config('auth.gi_host') . '/api/v1/mycourse?limit=6');
-        $mycourse = $access->json();
+        $access = Http::withToken(Auth::user()->access_token)
+                ->get(config('auth.gi_host') . '/api/v1/user-course', [
+                    'limit' => 4
+                ]);
+
+        $mycourse = json_decode($access->getBody());
 
         return view('home', compact('mycourse'));
     }
