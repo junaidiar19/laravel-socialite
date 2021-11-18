@@ -20,7 +20,6 @@ class GIController extends Controller
             'client_id' => config('auth.gi_id'),
             'redirect_uri' => config('auth.gi_callback'),
             'response_type' => 'code',
-            'scope' => env('GI_SCOPES'),
             'state' => $state,
         ]);
 
@@ -55,7 +54,7 @@ class GIController extends Controller
         $response = Http::withHeaders([
             'Accept' => 'application/json',
             'Authorization' => "Bearer " . $access_token,
-        ])->get(config('auth.gi_host') . '/api/user');
+        ])->get(config('auth.gi_host') . '/api/v1/user');
         
         $attr = $response->json();
 
