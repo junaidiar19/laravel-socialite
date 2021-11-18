@@ -74,7 +74,7 @@ class GIController extends Controller
             $user->access_token = $access_token;
             $user->provider = 'Guruinovatif';
             $user->provider_id = $attr['id'];
-            $user->avatar = 'https://guruinovatif.id/' . $attr['image'];
+            $user->avatar = config('auth.gi_host') . $attr['image'];
             $user->save();
         }
 

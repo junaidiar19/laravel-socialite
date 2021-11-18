@@ -78,12 +78,12 @@ class OauthController extends Controller
         } else {
             // create a new user
             $user = User::create([
-                'name' => $providerUser->getName(),
-                'email' => $providerUser->getEmail(),
-                'avatar' => $providerUser->getAvatar(),
-                'provider' => $driver,
-                'provider_id' => $providerUser->getId(),
-                'access_token' => $providerUser->token,
+                'name'              => $providerUser->getName(),
+                'email'             => $providerUser->getEmail(),
+                'avatar'            => $providerUser->getAvatar(),
+                'provider'          => $driver,
+                'provider_id'       => $providerUser->getId(),
+                'access_token'      => $providerUser->token,
                 // user can use reset password to create a password
                 'password' => ''
             ]);
