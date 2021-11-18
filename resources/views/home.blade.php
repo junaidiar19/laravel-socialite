@@ -23,14 +23,22 @@
                 </div>
             </div>
 
+            @if (@$mycourse)
             <h6>Kursus Yang Saya Ikuti</h6>
 
-            <div class="card">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    
+            <div class="row">
+                @foreach ($mycourse['data'] as $d)
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <img src="{{ config('auth.gi_host') . '/' . $d['image'] }}" class="img-fluid" alt="">
+                        <div class="card-body">
+                            <h6>{{ $d['name'] }}</h6>
+                        </div>
+                    </div>
                 </div>
+                @endforeach
             </div>
+            @endif
 
         </div>
     </div>
